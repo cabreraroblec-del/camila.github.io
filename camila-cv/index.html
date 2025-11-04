@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV · Camila Cabrera Roble</title>
+   <!-- AUTOR -->
+  <meta name="author" content="Camila Cabrera Roble" />
+  <meta name="description" content="Currículum Vitae de Camila Cabrera Roble: tecnología, inteligencia artificial, programación, ciencia y matemática aplicada." />
+  <!-- OpenGraph  -->
+  <meta property="og:title" content="CV · Camila Cabrera Roble">
+  <meta property="og:description" content="Currículum Vitae: tecnología, IA, programación y ciencia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://camilacabrera.dev/assets/profile.jpg" />
+  <!-- Favicon cuadrado recomendado -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" sizes="96x96" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="bg-particles" aria-hidden="true"></canvas>
+
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <img src="assets/profile.jpg" alt="Foto de Camila Cabrera Roble" class="avatar" loading="lazy" />
+      <h1>
+        <span class="typing" aria-live="polite">Camila Cabrera Roble</span>
+      </h1>
+      <p class="tagline">Estudiante de 6º año • Tecnología · Matemática · IA</p>
+    </div>
+    <div class="actions">
+      <button id="themeToggle" class="btn" aria-label="Cambiar tema (tecla D)">🌗 Tema</button>
+      <button id="printBtn" class="btn" aria-label="Imprimir o guardar PDF (tecla P)">🖨️ PDF</button>
+    </div>
+  </header>
+
+  <main class="layout" id="app" role="main">
+    <aside class="sidebar" aria-label="Contacto y datos personales">
+      <section class="card">
+        <h2>Contacto</h2>
+        <ul class="contact-list">
+          <li><span>📞</span> <a data-copy="tel" href="tel:+543435338165">343-5338165</a></li>
+          <li><span>✉️</span> <a data-copy="email" href="mailto:camila.cabrerarob@gmail.com">camila.cabrerarob@gmail.com</a></li>
+          <li><span>📍</span> <a data-copy="addr" href="https://maps.apple.com/?q=Avda.+Ramirez+873,+Paraná,+Entre+Ríos" target="_blank" rel="noopener">Avda. Ramírez 873, Paraná, Entre Ríos</a></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Más información</h2>
+        <ul class="meta">
+          <li>🗓️ Nacimiento: <span data-age title="Edad calculada automáticamente">11/03/2008</span></li>
+          <li>🇦🇷 Nacionalidad: Argentina</li>
+          <li>💬 Estado civil: Soltera</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Idiomas</h2>
+        <div class="chips" id="languages">
+          <span class="loading-langs" aria-live="polite">Cargando...</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Habilidades</h2>
+        <div id="skills">
+          <span class="loading-skills" aria-live="polite">Cargando...</span>
+        </div>
+      </section>
+    </aside>
+
+    <section class="content">
+      <nav class="tabs" aria-label="Secciones" role="tablist">
+        <button class="tab active" data-tab="about" role="tab" aria-selected="true" aria-controls="about" id="tab-about">Sobre mí</button>
+        <button class="tab" data-tab="objective" role="tab" aria-selected="false" aria-controls="objective" id="tab-objective">Objetivo</button>
+        <button class="tab" data-tab="education" role="tab" aria-selected="false" aria-controls="education" id="tab-education">Educación</button>
+        <button class="tab" data-tab="projects" role="tab" aria-selected="false" aria-controls="projects" id="tab-projects">Proyectos</button>
+        <button class="tab" data-tab="hobbies" role="tab" aria-selected="false" aria-controls="hobbies" id="tab-hobbies">Hobbies</button>
+      </nav>
+
+      <article id="about" class="panel active" role="tabpanel" tabindex="0" aria-labelledby="tab-about">
+        <p>
+          Soy una estudiante de último año de secundaria con un fuerte interés en la tecnología, la ciencia y la matemática, próxima a iniciar la carrera de Ingeniería en Inteligencia Artificial. Me caracterizo por la curiosidad, el compromiso académico y la capacidad de aprendizaje autónomo, siempre buscando crecer a través de nuevos desafíos.
+        </p>
+      </article>
+
+      <article id="objective" class="panel" role="tabpanel" tabindex="0" aria-labelledby="tab-objective">
+        <p>
+          Mi objetivo es incorporarme a un entorno en el que pueda aprender, aportar y seguir desarrollando habilidades en inteligencia artificial, programación y análisis de datos. Busco una experiencia que me permita adquirir conocimientos prácticos, colaborar en proyectos de innovación y fortalecer mi perfil profesional de cara a mi futura carrera universitaria.
+        </p>
+      </article>
+
+      <article id="education" class="panel" role="tabpanel" tabindex="0" aria-labelledby="tab-education">
+        <div class="toolbar">
+          <input type="search" id="eduSearch" placeholder="Buscar en educación… ( / )" aria-label="Buscar educación" />
+        </div>
+        <ol class="timeline" id="educationList" aria-live="polite"></ol>
+      </article>
+
+      <article id="projects" class="panel" role="tabpanel" tabindex="0" aria-labelledby="tab-projects">
+        <ul class="cards-grid" id="projectList">
+        </ul>
+      </article>
+
+      <article id="hobbies" class="panel" role="tabpanel" tabindex="0" aria-labelledby="tab-hobbies">
+        <ul class="cards-grid" id="hobbyList"></ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      © <span id="year"></span> Camila Cabrera Roble
+      · <a href="mailto:camila.cabrerarob@gmail.com" rel="noopener" title="Enviar mail">Email</a>
+
+    </p>
+  </footer>
+
+  <template id="educationItem">
+    <li class="timecard">
+      <div class="dot"></div>
+      <div class="timecard__content">
+        <h3 class="timecard__title"></h3>
+        <p class="timecard__meta"></p>
+        <p class="timecard__desc"></p>
+      </div>
+    </li>
+  </template>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
